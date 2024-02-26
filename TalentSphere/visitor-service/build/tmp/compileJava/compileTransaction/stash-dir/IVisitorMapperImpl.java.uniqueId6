@@ -1,0 +1,70 @@
+package org.group3.mapper;
+
+import javax.annotation.processing.Generated;
+import org.group3.dto.request.SaveRequestDto;
+import org.group3.dto.response.FindByIdResponseDto;
+import org.group3.dto.response.VisitorFindAllResponseDto;
+import org.group3.entity.Visitor;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-02-21T22:21:10+0300",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 19 (Oracle Corporation)"
+)
+@Component
+public class IVisitorMapperImpl implements IVisitorMapper {
+
+    @Override
+    public Visitor saveRequestDtoToVisitor(SaveRequestDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Visitor.VisitorBuilder visitor = Visitor.builder();
+
+        visitor.name( dto.getName() );
+        visitor.surname( dto.getSurname() );
+        visitor.email( dto.getEmail() );
+        visitor.phone( dto.getPhone() );
+
+        return visitor.build();
+    }
+
+    @Override
+    public FindByIdResponseDto visitorToFindByIdResponseDto(Visitor visitor) {
+        if ( visitor == null ) {
+            return null;
+        }
+
+        FindByIdResponseDto.FindByIdResponseDtoBuilder findByIdResponseDto = FindByIdResponseDto.builder();
+
+        findByIdResponseDto.id( visitor.getId() );
+        findByIdResponseDto.name( visitor.getName() );
+        findByIdResponseDto.surname( visitor.getSurname() );
+        findByIdResponseDto.email( visitor.getEmail() );
+        findByIdResponseDto.phone( visitor.getPhone() );
+        findByIdResponseDto.photo( visitor.getPhoto() );
+        findByIdResponseDto.createdDate( visitor.getCreatedDate() );
+        findByIdResponseDto.updatedDate( visitor.getUpdatedDate() );
+
+        return findByIdResponseDto.build();
+    }
+
+    @Override
+    public VisitorFindAllResponseDto visitorToFindAllResponseDto(Visitor visitor) {
+        if ( visitor == null ) {
+            return null;
+        }
+
+        VisitorFindAllResponseDto.VisitorFindAllResponseDtoBuilder visitorFindAllResponseDto = VisitorFindAllResponseDto.builder();
+
+        visitorFindAllResponseDto.id( visitor.getId() );
+        visitorFindAllResponseDto.name( visitor.getName() );
+        visitorFindAllResponseDto.surname( visitor.getSurname() );
+        visitorFindAllResponseDto.email( visitor.getEmail() );
+        visitorFindAllResponseDto.phone( visitor.getPhone() );
+
+        return visitorFindAllResponseDto.build();
+    }
+}

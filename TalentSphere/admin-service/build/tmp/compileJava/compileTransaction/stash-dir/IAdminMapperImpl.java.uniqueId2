@@ -1,0 +1,70 @@
+package org.group3.mapper;
+
+import javax.annotation.processing.Generated;
+import org.group3.dto.request.SaveRequestDto;
+import org.group3.dto.response.FindAllResponseDto;
+import org.group3.dto.response.FindByIdResponseDto;
+import org.group3.entity.Admin;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-02-21T22:49:25+0300",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 19 (Oracle Corporation)"
+)
+@Component
+public class IAdminMapperImpl implements IAdminMapper {
+
+    @Override
+    public Admin saveRequestDtoToAdmin(SaveRequestDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Admin.AdminBuilder admin = Admin.builder();
+
+        admin.name( dto.getName() );
+        admin.surname( dto.getSurname() );
+        admin.email( dto.getEmail() );
+        admin.phone( dto.getPhone() );
+
+        return admin.build();
+    }
+
+    @Override
+    public FindByIdResponseDto adminToFindByIdResponseDto(Admin admin) {
+        if ( admin == null ) {
+            return null;
+        }
+
+        FindByIdResponseDto.FindByIdResponseDtoBuilder findByIdResponseDto = FindByIdResponseDto.builder();
+
+        findByIdResponseDto.id( admin.getId() );
+        findByIdResponseDto.name( admin.getName() );
+        findByIdResponseDto.surname( admin.getSurname() );
+        findByIdResponseDto.email( admin.getEmail() );
+        findByIdResponseDto.phone( admin.getPhone() );
+        findByIdResponseDto.photo( admin.getPhoto() );
+        findByIdResponseDto.createdDate( admin.getCreatedDate() );
+        findByIdResponseDto.updatedDate( admin.getUpdatedDate() );
+
+        return findByIdResponseDto.build();
+    }
+
+    @Override
+    public FindAllResponseDto adminToFindAllResponseDto(Admin admin) {
+        if ( admin == null ) {
+            return null;
+        }
+
+        FindAllResponseDto.FindAllResponseDtoBuilder findAllResponseDto = FindAllResponseDto.builder();
+
+        findAllResponseDto.id( admin.getId() );
+        findAllResponseDto.name( admin.getName() );
+        findAllResponseDto.surname( admin.getSurname() );
+        findAllResponseDto.email( admin.getEmail() );
+        findAllResponseDto.phone( admin.getPhone() );
+
+        return findAllResponseDto.build();
+    }
+}
